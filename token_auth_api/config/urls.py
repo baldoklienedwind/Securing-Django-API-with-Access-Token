@@ -23,3 +23,6 @@ urlpatterns = [
     path('api-token-auth/', obtain_auth_token),
     path('', include('api.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
