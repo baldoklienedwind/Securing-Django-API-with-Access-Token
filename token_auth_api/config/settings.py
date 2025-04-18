@@ -26,23 +26,22 @@ INSTALLED_APPS = [
     
     'rest_framework',
     'rest_framework.authtoken',
-    'api',  # Your app name here
-    'corsheaders',  # For CORS handling
+    'api'
+    'corsheaders',
 ]
 
-# REST framework settings
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',  # Only token authentication
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',  # Only authenticated users can access
-    ],
+        'rest_framework.permissions.IsAuthenticated',
+    ]
 }
 
-# Middleware configuration
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',  # For handling CORS
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -52,14 +51,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# CORS settings to allow requests from specific domains
 CORS_ALLOWED_ORIGINS = [
-    "https://securing-django-api-with-access-token.onrender.com",  # Your production domain
-    "http://localhost:8000",  # Localhost
-    "http://127.0.0.1:8000",  # Localhost (alternative)
+    "https://securing-django-api-with-access-token.onrender.com", 
+    "http://localhost:8000",  
+    "http://127.0.0.1:8000", 
 ]
 
-CORS_ALLOW_CREDENTIALS = True  # Allow credentials like cookies or authorization headers
+CORS_ALLOW_CREDENTIALS = True
 
 # Root URL configuration
 ROOT_URLCONF = 'config.urls'
